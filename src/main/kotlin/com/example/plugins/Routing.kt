@@ -1,5 +1,6 @@
 package com.example.plugins
 
+import com.example.routes.bookRoute
 import com.example.routes.greetingRoute
 import com.example.routes.helloRoute
 import com.example.routes.userRoute
@@ -21,5 +22,6 @@ fun Application.configureRouting() {
         helloRoute()
         greetingRoute()
         userRoute()
+        bookRoute()
     }
 }
