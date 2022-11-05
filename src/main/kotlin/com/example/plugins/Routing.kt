@@ -1,5 +1,6 @@
 package com.example.plugins
 
+import com.example.routes.helloRoute
 import io.ktor.server.routing.*
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -14,18 +15,7 @@ fun Application.configureRouting() {
             call.respondText("Hello World!")
         }
     }
-    // パスパラメータ
     routing {
-        get("/hello/{name}") {
-            val name = call.parameters["name"]
-            call.respondText("Hello $name!")
-        }
-    }
-    // クエリストリング
-    routing {
-        get("hello") {
-            val name = call.parameters["name"]
-            call.respondText("hello $name")
-        }
+        helloRoute()
     }
 }
