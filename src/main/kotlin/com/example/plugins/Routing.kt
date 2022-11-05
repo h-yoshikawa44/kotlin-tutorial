@@ -2,6 +2,7 @@ package com.example.plugins
 
 import com.example.routes.greetingRoute
 import com.example.routes.helloRoute
+import com.example.routes.userRoute
 import io.ktor.server.routing.*
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -19,5 +20,6 @@ fun Application.configureRouting() {
     routing {
         helloRoute()
         greetingRoute()
+        userRoute()
     }
 }
