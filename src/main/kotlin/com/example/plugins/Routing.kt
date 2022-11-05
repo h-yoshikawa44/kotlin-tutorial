@@ -21,4 +21,11 @@ fun Application.configureRouting() {
             call.respondText("Hello $name!")
         }
     }
+    // クエリストリング
+    routing {
+        get("hello") {
+            val name = call.parameters["name"]
+            call.respondText("hello $name")
+        }
+    }
 }
