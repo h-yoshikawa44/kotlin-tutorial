@@ -19,7 +19,7 @@ fun Application.module() {
         basic {
             validate { credentials ->
                 if (credentials.name == "user" && credentials.password == "password") {
-                    // 認証成功時にセッションに保持される認証情報
+                    // 認証成功時にセッションに保持される認証情報（Principal インターフェース実装クラスであればどれでも使用できる）
                     UserIdPrincipal(credentials.name)
                 } else {
                     null
