@@ -14,6 +14,11 @@ fun Application.configureRouting() {
             call.respondText("Hello World!")
         }
     }
+    // パスパラメータ
     routing {
+        get("/hello/{name}") {
+            val name = call.parameters["name"]
+            call.respondText("Hello $name!")
+        }
     }
 }
