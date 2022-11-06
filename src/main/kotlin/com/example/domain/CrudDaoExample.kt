@@ -6,7 +6,7 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.transaction
 
 fun main() {
-    selectByName()
+    insert()
 }
 
 fun createSessionFactory() {
@@ -42,5 +42,15 @@ fun selectByName() {
     transaction {
         val entity = MemberEntity.find { MemberTable.name eq "Kotlin" }.map { MemberModel(it) }
         println(entity)
+    }
+}
+
+fun insert() {
+    createSessionFactory()
+    transaction {
+        val entity = MemberEntity.new {
+            name = "Shiro"
+        }
+        println(MemberModel(entity))
     }
 }
