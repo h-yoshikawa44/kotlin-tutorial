@@ -36,4 +36,9 @@ dependencies {
     implementation("mysql:mysql-connector-java:8.0.31")
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:5.5.4")
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }
