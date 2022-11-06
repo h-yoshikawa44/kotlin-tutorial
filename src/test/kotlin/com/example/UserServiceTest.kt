@@ -39,5 +39,20 @@ class UserServiceTest : StringSpec() {
             result shouldBe null
             verify { userRepository.findName(id) }
         }
+
+        "createMessage:: when id less than 0 then return null" {
+            val userRepository = mockk<UserRepository>()
+            val target = UserService(userRepository)
+
+            val id = -1
+
+            every { userRepository.findName(any()) } returns null
+
+            val result = target.createMessage(id)
+
+            result shouldBe null
+            // exactly で検証したい呼び出し回数を指定
+            verify(exactly = 0) { userRepository.findName(any()) }
+        }
     }
 }
