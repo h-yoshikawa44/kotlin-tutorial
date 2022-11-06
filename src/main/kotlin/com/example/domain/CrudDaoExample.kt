@@ -5,7 +5,7 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.transaction
 
 fun main() {
-    selectList()
+    selectById()
 }
 
 fun createSessionFactory() {
@@ -25,5 +25,13 @@ fun selectList() {
         list.forEach {
             println(it)
         }
+    }
+}
+
+fun selectById() {
+    createSessionFactory()
+    transaction {
+        val entity = MemberEntity.findById(2)
+        entity?.let { println(MemberModel(it)) }
     }
 }
