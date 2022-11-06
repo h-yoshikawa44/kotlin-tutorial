@@ -25,5 +25,19 @@ class UserServiceTest : StringSpec() {
             // モックオブジェクトの関数呼び出しの検証
             verify { userRepository.findName(id) }
         }
+
+        "createMessage:: when user name is not exist then return null" {
+            val userRepository = mockk<UserRepository>()
+            val target = UserService(userRepository)
+
+            val id = 100
+
+            every { userRepository.findName(any()) } returns null
+
+            val result = target.createMessage(id)
+
+            result shouldBe null
+            verify { userRepository.findName(id) }
+        }
     }
 }
