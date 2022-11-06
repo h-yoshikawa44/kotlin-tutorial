@@ -1,11 +1,12 @@
 package com.example.domain
 
 import MemberEntity
+import MemberTable
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.transaction
 
 fun main() {
-    selectById()
+    selectByName()
 }
 
 fun createSessionFactory() {
@@ -33,5 +34,13 @@ fun selectById() {
     transaction {
         val entity = MemberEntity.findById(2)
         entity?.let { println(MemberModel(it)) }
+    }
+}
+
+fun selectByName() {
+    createSessionFactory()
+    transaction {
+        val entity = MemberEntity.find { MemberTable.name eq "Kotlin" }.map { MemberModel(it) }
+        println(entity)
     }
 }
