@@ -6,7 +6,7 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.transaction
 
 fun main() {
-    update()
+    delete()
 }
 
 fun createSessionFactory() {
@@ -61,5 +61,13 @@ fun update() {
         // 更新対象のレコードを検索し、取得した結果の Entity クラスでプロパティの値を更新すると、データが更新される
         val entity = MemberEntity.findById(2)
         entity?.let { it.name = "Jiro"}
+    }
+}
+
+fun delete() {
+    createSessionFactory()
+    transaction {
+        val entity = MemberEntity.findById(3)
+        entity?.delete()
     }
 }
